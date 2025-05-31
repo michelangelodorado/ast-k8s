@@ -1,0 +1,49 @@
+apiVersion: v1
+data:
+  dashboards.yaml: |-
+    apiVersion: 1
+
+    providers:
+      - name: 'Otel Collector'
+        orgId: 1
+        folder: ''
+        type: file
+        disableDeletion: false
+        editable: true
+        allowUiUpdates: true
+        options:
+          path: /etc/grafana/provisioning/dashboards/otel-collector
+      - name: 'BigIP - Device'
+        orgId: 1
+        folder: 'BigIP - Device'
+        type: file
+        disableDeletion: false
+        editable: true
+        allowUiUpdates: true
+        options:
+          path: /etc/grafana/provisioning/dashboards/bigip/device
+      - name: 'BigIP - Device Profiles'
+        orgId: 1
+        folder: 'BigIP - Device/Profiles'
+        type: file
+        disableDeletion: false
+        editable: true
+        allowUiUpdates: true
+        options:
+          path: /etc/grafana/provisioning/dashboards/bigip/profile
+      - name: 'BigIP - Fleet'
+        orgId: 1
+        folder: 'BigIP - Fleet'
+        type: file
+        disableDeletion: false
+        editable: true
+        allowUiUpdates: true
+        options:
+          path: /etc/grafana/provisioning/dashboards/bigip/fleet
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2025-05-31T13:58:18Z"
+  name: grafana-dashboards-yaml
+  namespace: m-dorado
+  resourceVersion: "7218255094"
+  uid: fc187779-7836-49fb-9505-4142e22736c8

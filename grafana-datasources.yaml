@@ -1,0 +1,23 @@
+apiVersion: v1
+data:
+  datasources.yaml: |-
+    apiVersion: 1
+
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        access: proxy
+        orgId: 1
+        url: http://prometheus:9090
+        basicAuth: false
+        isDefault: true
+        editable: true
+        jsonData:
+          timeInterval: 60s
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2025-05-31T13:58:20Z"
+  name: grafana-datasources
+  namespace: m-dorado
+  resourceVersion: "7218255225"
+  uid: fc05299a-4e69-4e5a-8857-ba0afc11411e

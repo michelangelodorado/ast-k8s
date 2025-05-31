@@ -1,0 +1,8 @@
+metrics/local:
+  exporters:
+  - otlphttp/metrics-local
+  - debug/bigip
+  processors:
+  - batch/local
+  receivers:
+  - bigip/1
