@@ -1,5 +1,5 @@
 
-# 📊 Kubernetes Monitoring Stack Deployment Guide  
+# 📊 AST in Kubernetes (XC AppStack) Deployment Guide  
 *Prometheus, OTEL Collector, and Grafana*
 
 ---
@@ -16,12 +16,6 @@ This guide provides end-to-end steps to deploy a monitoring stack in Kubernetes 
 ---
 
 ## 1️⃣ Prerequisites and Setup
-
-### 🔹 Create Namespace
-
-```bash
-kubectl create namespace m-dorado
-```
 
 ### 🔹 Clone Repositories
 
