@@ -12,19 +12,15 @@ git clone https://github.com/your-org/application-study-tool.git
 cd application-study-tool
 ```
 
-```bash
-git clone https://github.com/michelangelodorado/ast-k8s.git
-cd ast-k8s/k8s-manifest
-```
-
 ### 2. Follow Base Instructions
 
 Perform the original instructions from the main repo up until the `docker run` step.
 
-### 3. Create Namespace
+### 3. Clone AST K8s add-on
 
 ```bash
-kubectl create namespace m-dorado
+git clone https://github.com/michelangelodorado/ast-k8s.git
+cd ast-k8s/k8s-manifest
 ```
 
 ### 4. Apply Secrets
