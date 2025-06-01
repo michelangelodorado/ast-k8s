@@ -3,10 +3,35 @@
 
 This guide provides complete setup instructions to deploy Prometheus, OpenTelemetry Collector, and Grafana on a Kubernetes cluster using ConfigMaps, Secrets, Persistent Volumes, and DockerHub authentication.
 
-## 📁 Namespace
+## 📦 Setup Steps
+
+### 1. Clone Repositories
+
+```bash
+git clone https://github.com/your-org/application-study-tool.git
+cd application-study-tool
+```
+
+```bash
+git clone https://github.com/michelangelodorado/ast-k8s.git
+cd ast-k8s/k8s-manifest
+```
+
+### 2. Follow Base Instructions
+
+Perform the original instructions from the main repo up until the `docker run` step.
+
+### 3. Create Namespace
 
 ```bash
 kubectl create namespace m-dorado
+```
+
+### 4. Apply Secrets
+
+```bash
+kubectl apply -f grafana-secret.yaml
+kubectl apply -f otel-env-secret.yaml
 ```
 
 ## 📦 PersistentVolumeClaims
@@ -82,10 +107,27 @@ kubectl apply -f prometheus-service.yaml
 
 ## 📡 OTEL Collector
 
-### ConfigMap
+### OpenTelemetry ConfigMap
 
 ```bash
-kubectl create configmap otel-config   --from-file=defaults=services/otel_collector/defaults   --namespace=m-dorado
+kubectl create configmap otel-config \
+  --from-file=../services/otel_collector/defaults/bigip-scraper-config.yaml \
+  --from-file=../services/otel_collector/pipelines.yaml \
+  --from-file=../services/otel_collector/receivers.yaml \
+  --namespace=m-dorado \
+  --dry-run=client -o yaml > otel-configmap.yaml
+
+kubectl apply -f otel-configmap.yaml
+```
+
+## 📡 Prometheus
+
+### Prometheus ConfigMap
+
+```bash
+kubectl create configmap prometheus-config \
+  --from-file=prometheus.yml=services/prometheus/prometheus.yml \
+  --namespace=m-dorado
 ```
 
 ### Secret
@@ -147,14 +189,6 @@ kubectl create configmap grafana-dashboards-yaml   --from-file=dashboards.yaml=p
 
 kubectl create configmap grafana-datasources   --from-file=provisioning/datasources   --namespace=m-dorado
 ```
-
-## 🚀 Access Grafana
-
-```bash
-kubectl port-forward svc/grafana -n m-dorado 3000:3000
-```
-
-Open: http://localhost:3000
 
 ## ✅ Verification
 
