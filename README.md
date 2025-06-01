@@ -8,7 +8,7 @@ This guide provides complete setup instructions to deploy Prometheus, OpenTeleme
 ### 1. Clone Repositories
 
 ```bash
-git clone https://github.com/your-org/application-study-tool.git
+git clone https://github.com/f5devcentral/application-study-tool.git
 cd application-study-tool
 ```
 
